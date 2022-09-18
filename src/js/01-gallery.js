@@ -33,13 +33,16 @@ function clickOnImage(event) {
         " width="800" height="600" >`);
   instance.show();
 
-  galeryRef.addEventListener('keydown', event => {
+  galeryRef.addEventListener('keydown', onEscapePress);
+
+  function onEscapePress(event) {
     if (event.code === 'Escape') {
       instance.close();
     }
-  });
-}
-
-function blockStandartAction(event) {
-  event.preventDefault();
+    galeryRef.removeEventListener('keydown', onEscapePress);
+    console.log(event.code);
+  }
+  function blockStandartAction(event) {
+    event.preventDefault();
+  }
 }
